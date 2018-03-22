@@ -3,8 +3,15 @@ use_directory_urls: true
 
 theme:
   name: 'material'
+  font:
+    text: 'Meiryo UI'
+    code: 'Consolas'
+  language: 'ja'
   feature:
     tabs: true
+  palette:
+    primary: "indigo"
+    accent: "red"
   # name: 'readthedocs'
 
 extra_css:
@@ -22,11 +29,15 @@ markdown_extensions:
       base_path: docs
   - lightbox
   - plantuml
-  - codehilite
+  - codehilite:
+      linenums: true # 行番号を付与
+      use_pygments: true # Pygmentsを使用
   - admonition
   - toc:
-      permalink: true
-      separator: "_"
+      permalink: true # permalinkを作成
+      separator: "_"  # リンクの区切り文字を設定
+      marker: "[TOC]" # 目次に置き換える文字列
+      title: "=== 目次 ===" # 目次のタイトル
   - attr_list
   - def_list
   - tables
@@ -34,7 +45,12 @@ markdown_extensions:
   - fenced_code
   - wikilinks
   - pymdownx.tasklist:
-      custom_checkbox: false
+      custom_checkbox: true
+      clickable_checkbox: true
   - pymdownx.snippets:
       base_path: docs
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.keys
+  - pymdownx.mark
 
