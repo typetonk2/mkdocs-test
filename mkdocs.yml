@@ -10,11 +10,12 @@ theme:
   feature:
     tabs: true
   palette:
-    primary: "indigo"
-    accent: "red"
+    primary: "Indigo"
+    accent: "Green"
   # name: 'readthedocs'
 
 extra_css:
+  - 'css/material.css'
   - 'css/mermaid.css'
   - 'css/fontawesome-all.css'
   - 'css/lightbox.css'
@@ -35,7 +36,7 @@ markdown_extensions:
       permalink: true # permalinkを作成
       separator: "_"  # リンクの区切り文字を設定
       marker: "[TOC]" # 目次に置き換える文字列
-      title: "=== 目次 ===" # 目次のタイトル
+      # title: "C" # 目次のタイトル。これを変更すると何故かmaterialテーマの目次が表示されなくなる。
   - abbr
   - attr_list
   - def_list
