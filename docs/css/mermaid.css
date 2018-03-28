@@ -90,9 +90,8 @@ text.actor {
 }
 /** Section styling */
 .section {
-  stroke: none; 
-/* below commented out because it conflicts with the readthedocs theme */
-/*  opacity: 0.2; */
+  stroke: none;
+  opacity: 0.2;
 }
 .section0 {
   fill: rgba(102, 102, 255, 0.49);

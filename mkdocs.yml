@@ -20,13 +20,11 @@ extra_css:
   - 'css/lightbox.css'
 
 extra_javascript:
-  - 'js/mermaid.min.js'
+  - 'js/mermaid.js'
   - 'js/fontawesome-all.js'
   - 'js/lightbox-plus-jquery.js'
 
 markdown_extensions:
-  - markdown_include.include:
-      base_path: docs
   - lightbox
   - plantuml
   - codehilite:
@@ -38,12 +36,15 @@ markdown_extensions:
       separator: "_"  # リンクの区切り文字を設定
       marker: "[TOC]" # 目次に置き換える文字列
       title: "=== 目次 ===" # 目次のタイトル
+  - abbr
   - attr_list
   - def_list
   - tables
   - footnotes
   - fenced_code
   - wikilinks
+  - markdown_include.include:
+      base_path: docs
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true

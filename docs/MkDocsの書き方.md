@@ -48,7 +48,6 @@ markdown_extensions:
 [TOC]
 ```
 
-
 ## table
 
 表を書く。
@@ -60,7 +59,7 @@ markdown_extensions:
   - tables
 ```
 
-### 構文と結果
+### 使用例
 
 ```
 | markdown-include   | 0.5.1  |
@@ -177,94 +176,6 @@ markdown_extensions:
 !!! Note "Change title"
     This is Note!
 
-## details
-
-admonitionを折り畳める。
-
-### 設定
-
-```
-markdown_extensions:
-  - pymdownx.details
-```
-
-### 使用例
-
-```
-???+ Note
-    折り畳めるノート。展開済み。
-
-    ??? Summary
-        折り畳まれたサマリー
-```
-
-???+ note
-    折り畳めるnote。
-
-    ??? danger
-        折り畳まれたdanger
-
-
-## definition
-
-定義リスト。使い道無さそう。
-
-### 設定
-
-```
-markdown_extensions:
-  - def_list
-```
-
-### 使用例
-
-```
-質問1
-: 回答1
-```
-
-質問
-: 回答
-
-## tasklist
-
-GitHubっぽいタスクリスト。
-
-### 設定
-
-```
-markdown_extensions:
-  - pymdownx.tasklist:
-      custom_checkbox: true
-      clickable_checkbox: true
-```
-
-### 使用例
-
-* [x] task1
-* [ ] task2
-
-## footnotes
-
-### 設定
-
-```
-markdown_extensions:
-  - footnotes
-```
-
-### 使用例
-
-```
-MkDocsで脚注[^1]を付ける。
-
-[^1]: ページの一番下に表示されるはず。
-```
-
-MkDocsで脚注[^1]を付ける。
-
-[^1]: ページの一番下に表示されるはず。
-
 ## attr_list
 
 要素に属性を付与出来る。  
@@ -327,6 +238,94 @@ ss = str(now.second)
 
 print mm + "/" + dd + "/" + yyyy + " " + hour + ":" + mi + ":" + ss
 ```
+
+## details
+
+admonitionを折り畳める。
+
+### 設定
+
+```
+markdown_extensions:
+  - pymdownx.details
+```
+
+### 使用例
+
+```
+???+ Note
+    折り畳めるノート。展開済み。
+
+    ??? Summary
+        折り畳まれたサマリー
+```
+
+???+ note
+    折り畳めるnote。
+
+    ??? danger
+        折り畳まれたdanger
+
+
+## definition
+
+定義リスト。使い道無さそう。
+
+### 設定
+
+```
+markdown_extensions:
+  - def_list
+```
+
+### 使用例
+
+```
+質問1
+: 回答1
+```
+
+質問
+: 回答
+
+## footnotes
+
+### 設定
+
+```
+markdown_extensions:
+  - footnotes
+```
+
+### 使用例
+
+```
+MkDocsで脚注[^1]を付ける。
+
+[^1]: ページの一番下に表示されるはず。
+```
+
+MkDocsで脚注[^1]を付ける。
+
+[^1]: ページの一番下に表示されるはず。
+
+## tasklist
+
+GitHubっぽいタスクリスト。オプションを有効にすると外部からcssを取得する模様。
+
+### 設定
+
+```
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+```
+
+### 使用例
+
+* [x] task1
+* [ ] task2
 
 ## magiclink
 
@@ -392,28 +391,129 @@ markdown_extensions:
 
 ## mermaid
 
+テキストで図形を描画。
+
+### 設定
+
+mermaid.jsとmermaid.cssを準備する。
+[MkDocsPlus](https://github.com/bwmarrin/MkDocsPlus/tree/master/docs)や、
+[公式](https://github.com/knsv/mermaid)から取得する。
+
+mkdocs.ymlに以下を追加する。
+
+```
+extra_css:
+  - 'css/mermaid.css'
+
+extra_javascript:
+  - 'js/mermaid.js'
+```
+
+mkdocs.ymlで指定したパスに、mermaid.jsとmermaid.cssを配置する。
+
+### 使用例
+
+公式の例を使用。
+
+フローチャート
+
+```
 <div class="mermaid">
-graph TD
-  hoge --> fuga
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+</div>
+```
+
+<div class="mermaid">
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+</div>
+
+シーケンス図
+
+```
+<div class="mermaid">
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->John: Hello John, how are you?
+    loop Healthcheck
+        John->John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail...
+    John-->Alice: Great!
+    John->Bob: How about you?
+    Bob-->John: Jolly good!
+</div>
+```
+
+<div class="mermaid">
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->John: Hello John, how are you?
+    loop Healthcheck
+        John->John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail...
+    John-->Alice: Great!
+    John->Bob: How about you?
+    Bob-->John: Jolly good!
+</div>
+
+ガントチャート。正直これは使わない気がする。
+
+```
+<div class="mermaid">
+gantt
+        dateFormat  YYYY-MM-DD
+        title Adding GANTT diagram functionality to mermaid
+        section A section
+        Completed task            :done,    des1, 2014-01-06,2014-01-08
+        Active task               :active,  des2, 2014-01-09, 3d
+        Future task               :         des3, after des2, 5d
+        Future task2               :         des4, after des3, 5d
+        section Critical tasks
+        Completed task in the critical line :crit, done, 2014-01-06,24h
+        Implement parser and jison          :crit, done, after des1, 2d
+        Create tests for parser             :crit, active, 3d
+        Future task in critical line        :crit, 5d
+        Create tests for renderer           :2d
+        Add to mermaid                      :1d
+</div>
+```
+
+<div class="mermaid">
+gantt
+        dateFormat  YYYY-MM-DD
+        title Adding GANTT diagram functionality to mermaid
+        section A section
+        Completed task            :done,    des1, 2014-01-06,2014-01-08
+        Active task               :active,  des2, 2014-01-09, 3d
+        Future task               :         des3, after des2, 5d
+        Future task2               :         des4, after des3, 5d
+        section Critical tasks
+        Completed task in the critical line :crit, done, 2014-01-06,24h
+        Implement parser and jison          :crit, done, after des1, 2d
+        Create tests for parser             :crit, active, 3d
+        Future task in critical line        :crit, 5d
+        Create tests for renderer           :2d
+        Add to mermaid                      :1d
 </div>
 
 ## plantuml
 
-[plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)は動かない模様。
-previmにplantumlの機能を追加した人のがあるので、これを使うか、  
-https://github.com/kazuph/previm/tree/feature/add-plantuml-plugin
+[plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)を使う。
 
-```uml
-@startuml
-bob -> alice : hello
-bob <- alice : hai
-@enduml
-```
+plantumlで画像を作成し、直接貼る。
 
-
-plantuml自体は動くのでそれを使うか、
-
-yUMLというサービスを使うのがいいと思う。  
+yUMLというサービスを使う。
 https://yuml.me/diagram/scruffy/class/draw
 
 ## その他
