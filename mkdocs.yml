@@ -13,6 +13,10 @@ theme:
     primary: "Indigo"
     accent: "Green"
   # name: 'readthedocs'
+  # name: 'mkdocs'
+
+repo_name: 'typetonk2/mkdocs-test'
+repo_url: 'https://github.com/typetonk2/mkdocs-test'
 
 extra_css:
   - 'css/material.css'
@@ -44,6 +48,7 @@ markdown_extensions:
   - footnotes
   - fenced_code
   - wikilinks
+  - sane_lists
   - markdown_include.include:
       base_path: docs
   - pymdownx.tasklist:
