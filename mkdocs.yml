@@ -44,6 +44,7 @@ markdown_extensions:
   - abbr
   - attr_list
   - def_list
+  - nl2br
   - tables
   - footnotes
   - fenced_code

@@ -255,11 +255,37 @@ markdown_extensions:
 
 ### 使用例
 
+html
+
+```
+  ```html
+  <i class="test">foobar</i>
+  ```
+```
+
 ```html
 <i class="test">foobar</i>
 ```
 
-```python
+python + 任意行のハイライト
+
+```
+  ```python hl_lines="3 5"
+  from datetime import datetime
+
+  now = datetime.now()
+  mm = str(now.month)
+  dd = str(now.day)
+  yyyy = str(now.year)
+  hour = str(now.hour)
+  mi = str(now.minute)
+  ss = str(now.second)
+
+  print mm + "/" + dd + "/" + yyyy + " " + hour + ":" + mi + ":" + ss
+  ```
+```
+
+```python hl_lines="3 5"
 from datetime import datetime
 
 now = datetime.now()
@@ -272,6 +298,7 @@ ss = str(now.second)
 
 print mm + "/" + dd + "/" + yyyy + " " + hour + ":" + mi + ":" + ss
 ```
+
 
 ## details
 
@@ -342,6 +369,54 @@ MkDocsで脚注[^1]を付ける。
 MkDocsで脚注[^1]を付ける。
 
 [^1]: ページの一番下に表示されるはず。
+
+## nl2br
+
+New Line To BReak の略。末尾にスペースを2つ入れなくても改行されるようにする。
+GFM もこれらしい。
+
+*[GFM]: GitHub Flavored Markdown
+
+### 設定
+
+```
+markdown_extensions:
+  - nl2br
+```
+
+### 使用例
+
+```
+末尾にスペースを2つ
+入れていなくても改行される。
+```
+
+末尾にスペースを2つ
+入れていなくても改行される。
+
+もちろん入れていても問題はない。
+
+## wikilinks
+
+wikiのようなリンクを作成する。
+
+* `[[index.md]]`とすると、リンクが作成されなかった。
+* `[[path/to/name]]`のような階層指定も出来ない。微妙。
+
+### 設定
+
+```
+markdown_extensions:
+  - wikilinks
+```
+
+### 使用例
+
+```
+[[MkDocsの書き方]] へのリンク。
+```
+
+[[MkDocsの書き方]] へのリンク。
 
 ## tasklist
 
