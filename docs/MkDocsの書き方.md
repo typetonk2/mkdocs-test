@@ -27,6 +27,9 @@ https://python-markdown.github.io/extensions/
 pymdown-extensionsで使える拡張機能  
 https://facelessuser.github.io/pymdown-extensions/
 
+mkdocs-material  
+https://squidfunk.github.io/mkdocs-material/
+
 ## toc
 
 目次を付ける。
