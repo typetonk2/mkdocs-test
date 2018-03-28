@@ -497,6 +497,86 @@ markdown_extensions:
 
 ++ctrl+alt+delete++
 
+## mdx_del_ins
+
+`<del>`と`<ins>`タグを追加する。
+`pymdownx.tilde`でも`<del>`は使えるけど、何だか挙動が怪しかったのでこっちを残した。
+
+最終更新日が6年前っていうのが気になるけど、シンプル故にバグもない、と思いたい。
+
+### 設定
+
+pipでインストール。
+
+`pip install mdx_del_ins`
+
+mkdocs.ymlで設定。
+
+```
+markdown_extensions:
+  - del_ins
+```
+
+### 使用例
+
+```
+このテキストには ++追加された箇所++ と ~~削除された箇所~~ があります。
+```
+
+このテキストには ++追加された箇所++ と ~~削除された箇所~~ があります。
+
+## Snippets
+
+外部ファイルを読み込む。rstやasciidocのinclude構文のようなもの。
+
+### 設定
+
+```
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path: docs
+```
+
+* base_pathを指定しない場合、mkdocs.ymlがある場所になる。
+
+### 使用例
+
+コードブロックで囲っても、読み込まれた内容が表示される。
+また、syntaxもおかしくなるため、
+[Snippets - PyMdown Extensions Documentation](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/)
+を参照。
+
+後述の`markdown_include`の方がいいかもしれない。
+
+## markdown_include
+
+Snippetsと同じく、外部ファイルを読み込む。
+
+### 設定
+
+pipでインストール。
+
+`pip install markdown-include`
+
+mkdocs.ymlで設定。
+
+```
+markdown_extensions:
+  - markdown_include.include:
+      base_path: docs
+```
+
+* base_pathを指定しない場合、mkdocs.ymlがある場所になる。
+
+### 使用例
+
+コードブロックで囲っても、読み込まれた内容が表示される。
+
+```
+{!include.txt!}
+```
+
+こちらはsyntax的に問題ない。
 
 ## mermaid
 
@@ -626,16 +706,6 @@ yUMLというサービスを使う。
 https://yuml.me/diagram/scruffy/class/draw
 
 ## その他
-
-markdown_include テスト
-
-{!include.txt!}
-
-pymdownx.snippets テスト
-
---8<---
-include.txt
---8<---
 
 ![画像テスト](./test.png)
 
