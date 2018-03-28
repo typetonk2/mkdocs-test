@@ -96,6 +96,37 @@ markdown_extensions:
  mkdocs-material      | 2.7.1
  pymdown-extensions   | 4.9.1
 
+## abbr
+
+略語の追加。
+
+### 設定
+
+```
+markdown_extensions:
+  - abbr
+```
+
+### 使用例
+
+[公式](https://python-markdown.github.io/extensions/abbreviations/)から。
+
+```
+The HTML specification
+is maintained by the W3C.
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+```
+
+The HTML specification
+is maintained by the W3C.
+
+*[HTML]: Hyper Text Markup Language
+*[W3C]:  World Wide Web Consortium
+
+* 前後をスペースで区切る必要あり。
+* 略語の指定はどこに書いてもよい。
 
 ## admonition
 
