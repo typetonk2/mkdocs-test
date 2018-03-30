@@ -30,11 +30,15 @@ https://facelessuser.github.io/pymdown-extensions/
 mkdocs-material  
 https://squidfunk.github.io/mkdocs-material/
 
-## toc
+## Python-Markdown Extensioins 
+
+Python-Markdownに標準で含まれている拡張機能。
+
+### toc
 
 目次を付ける。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
@@ -45,24 +49,24 @@ markdown_extensions:
       title: "=== 目次 ===" # 目次のタイトル
 ```
 
-### 使用例
+#### 使用例
 
 ```
 [TOC]
 ```
 
-## table
+### table
 
 表を書く。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - tables
 ```
 
-### 使用例
+#### 使用例
 
 ```
 | markdown-include   | 0.5.1  |
@@ -99,18 +103,18 @@ markdown_extensions:
  mkdocs-material      | 2.7.1
  pymdown-extensions   | 4.9.1
 
-## abbr
+### abbr
 
 略語の追加。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - abbr
 ```
 
-### 使用例
+#### 使用例
 
 [公式](https://python-markdown.github.io/extensions/abbreviations/)から。
 
@@ -131,18 +135,18 @@ is maintained by the W3C.
 * 前後をスペースで区切る必要あり。
 * 略語の指定はどこに書いてもよい。
 
-## admonition
+### admonition
 
 注意/警告 等の通知メッセージ。  
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - admonition
 ```
 
-### 使用例
+#### 使用例
 
 ```
 !!! Note
@@ -210,18 +214,18 @@ markdown_extensions:
 !!! Note "Change title"
     This is Note!
 
-## attr_list
+### attr_list
 
 要素に属性を付与出来る。  
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - attr_list
 ```
 
-### 使用例
+#### 使用例
 
 ```
 add attribute
@@ -240,11 +244,11 @@ add attribute
 
 [_self link](http://www.mkdocs.org/){: target="_self" }
 
-## codehilite
+### codehilite
 
 コードブロックを色付けする。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
@@ -253,7 +257,7 @@ markdown_extensions:
       use_pygments: true # Pygmentsを使用
 ```
 
-### 使用例
+#### 使用例
 
 html
 
@@ -300,18 +304,115 @@ print mm + "/" + dd + "/" + yyyy + " " + hour + ":" + mi + ":" + ss
 ```
 
 
-## details
+### definition
+
+定義リスト。使い道無さそう。
+
+#### 設定
+
+```
+markdown_extensions:
+  - def_list
+```
+
+#### 使用例
+
+```
+質問1
+: 回答1
+```
+
+質問
+: 回答
+
+### footnotes
+
+#### 設定
+
+```
+markdown_extensions:
+  - footnotes
+```
+
+#### 使用例
+
+```
+MkDocsで脚注[^1]を付ける。
+
+[^1]: ページの一番下に表示されるはず。
+```
+
+MkDocsで脚注[^1]を付ける。
+
+[^1]: ページの一番下に表示されるはず。
+
+### nl2br
+
+New Line To BReak の略。末尾にスペースを2つ入れなくても改行されるようにする。
+GFM もこれらしい。
+
+*[GFM]: GitHub Flavored Markdown
+
+#### 設定
+
+```
+markdown_extensions:
+  - nl2br
+```
+
+#### 使用例
+
+```
+末尾にスペースを2つ
+入れていなくても改行される。
+```
+
+末尾にスペースを2つ
+入れていなくても改行される。
+
+もちろん入れていても問題はない。
+
+### wikilinks
+
+wikiのようなリンクを作成する。
+
+* `[[index.md]]`とすると、リンクが作成されなかった。
+* `[[path/to/name]]`のような階層指定も出来ない。微妙。
+
+#### 設定
+
+```
+markdown_extensions:
+  - wikilinks
+```
+
+#### 使用例
+
+```
+[[MkDocsの書き方]] へのリンク。
+```
+
+[[MkDocsの書き方]] へのリンク。
+
+## Pymdown Extensions
+
+追加拡張機能が色々含まれているパッケージ。  
+別途pip等でインストールして使用する必要がある。
+
+* mkdocs-materialを導入すれば、一部は一緒にインストールされる。
+
+### details
 
 admonitionを折り畳める。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - pymdownx.details
 ```
 
-### 使用例
+#### 使用例
 
 ```
 ???+ Note
@@ -328,101 +429,11 @@ markdown_extensions:
         折り畳まれたdanger
 
 
-## definition
-
-定義リスト。使い道無さそう。
-
-### 設定
-
-```
-markdown_extensions:
-  - def_list
-```
-
-### 使用例
-
-```
-質問1
-: 回答1
-```
-
-質問
-: 回答
-
-## footnotes
-
-### 設定
-
-```
-markdown_extensions:
-  - footnotes
-```
-
-### 使用例
-
-```
-MkDocsで脚注[^1]を付ける。
-
-[^1]: ページの一番下に表示されるはず。
-```
-
-MkDocsで脚注[^1]を付ける。
-
-[^1]: ページの一番下に表示されるはず。
-
-## nl2br
-
-New Line To BReak の略。末尾にスペースを2つ入れなくても改行されるようにする。
-GFM もこれらしい。
-
-*[GFM]: GitHub Flavored Markdown
-
-### 設定
-
-```
-markdown_extensions:
-  - nl2br
-```
-
-### 使用例
-
-```
-末尾にスペースを2つ
-入れていなくても改行される。
-```
-
-末尾にスペースを2つ
-入れていなくても改行される。
-
-もちろん入れていても問題はない。
-
-## wikilinks
-
-wikiのようなリンクを作成する。
-
-* `[[index.md]]`とすると、リンクが作成されなかった。
-* `[[path/to/name]]`のような階層指定も出来ない。微妙。
-
-### 設定
-
-```
-markdown_extensions:
-  - wikilinks
-```
-
-### 使用例
-
-```
-[[MkDocsの書き方]] へのリンク。
-```
-
-[[MkDocsの書き方]] へのリンク。
-
-## tasklist
+### tasklist
 
 GitHubっぽいタスクリスト。オプションを有効にすると外部からcssを取得する模様。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
@@ -431,23 +442,23 @@ markdown_extensions:
       clickable_checkbox: true
 ```
 
-### 使用例
+#### 使用例
 
 * [x] task1
 * [ ] task2
 
-## magiclink
+### magiclink
 
 `http[s]://~`なテキストを、自動的にリンクにする。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - pymdownx.magiclink
 ```
 
-### 使用例
+#### 使用例
 
 https://daringfireball.net/projects/markdown/syntax
 
@@ -457,18 +468,18 @@ www.mkdocs.org
 
 mkdocs.org
 
-## mark
+### mark
 
 文字列をハイライト表示する。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - pymdownx.mark
 ```
 
-### 使用例
+#### 使用例
 
 ```
 これは通常の文字列。  
@@ -478,18 +489,18 @@ markdown_extensions:
 これは通常の文字列です。  
 これは ==ハイライトされた文字列== です。
 
-## keys
+### keys
 
 ctrlやaltをそれっぽく表示する。
 
-### 設定
+#### 設定
 
 ```
 markdown_extensions:
   - pymdownx.keys
 ```
 
-### 使用例
+#### 使用例
 
 ```
 +++ctrl+alt+delete+++
@@ -497,14 +508,42 @@ markdown_extensions:
 
 ++ctrl+alt+delete++
 
-## mdx_del_ins
+### Snippets
+
+外部ファイルを読み込む。rstやasciidocのinclude構文のようなもの。
+
+#### 設定
+
+```
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path: docs
+```
+
+* base_pathを指定しない場合、mkdocs.ymlがある場所になる。
+
+#### 使用例
+
+コードブロックで囲っても、読み込まれた内容が表示される。
+また、syntaxもおかしくなるため、
+[Snippets - PyMdown Extensions Documentation](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/)
+を参照。
+
+後述の`markdown_include`の方がいいかもしれない。
+
+## その他
+
+markdown標準やpymdownxに含まれていないもの。  
+GitHub等から直接インストールしたり、外部jsとして追加して使用する。
+
+### mdx_del_ins
 
 `<del>`と`<ins>`タグを追加する。
 `pymdownx.tilde`でも`<del>`は使えるけど、何だか挙動が怪しかったのでこっちを残した。
 
 最終更新日が6年前っていうのが気になるけど、シンプル故にバグもない、と思いたい。
 
-### 設定
+#### 設定
 
 pipでインストール。
 
@@ -517,7 +556,7 @@ markdown_extensions:
   - del_ins
 ```
 
-### 使用例
+#### 使用例
 
 ```
 このテキストには ++追加された箇所++ と ~~削除された箇所~~ があります。
@@ -525,34 +564,11 @@ markdown_extensions:
 
 このテキストには ++追加された箇所++ と ~~削除された箇所~~ があります。
 
-## Snippets
-
-外部ファイルを読み込む。rstやasciidocのinclude構文のようなもの。
-
-### 設定
-
-```
-markdown_extensions:
-  - pymdownx.snippets:
-      base_path: docs
-```
-
-* base_pathを指定しない場合、mkdocs.ymlがある場所になる。
-
-### 使用例
-
-コードブロックで囲っても、読み込まれた内容が表示される。
-また、syntaxもおかしくなるため、
-[Snippets - PyMdown Extensions Documentation](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/)
-を参照。
-
-後述の`markdown_include`の方がいいかもしれない。
-
-## markdown_include
+### markdown_include
 
 Snippetsと同じく、外部ファイルを読み込む。
 
-### 設定
+#### 設定
 
 pipでインストール。
 
@@ -568,7 +584,7 @@ markdown_extensions:
 
 * base_pathを指定しない場合、mkdocs.ymlがある場所になる。
 
-### 使用例
+#### 使用例
 
 コードブロックで囲っても、読み込まれた内容が表示される。
 
@@ -578,11 +594,82 @@ markdown_extensions:
 
 こちらはsyntax的に問題ない。
 
-## mermaid
+### Lightbox
+
+画像をクリックする事で拡大表示する。
+http://lokeshdhakar.com/projects/lightbox2/
+
+* zoom.jsとは併用できない。
+* extensionを読み込まず、直接htmlで記述すれば可能。
+
+#### 設定
+
+https://github.com/AliciaSchep/markdown-lightbox をクローンする。
+
+展開し、`pip install <展開したフォルダ>`でインストール。
+
+mkdocs.ymlに以下を追加し、cssとjsを配置する。
+
+```
+extra_css:
+  - 'css/lightbox.css'
+extra_javascript:
+  - 'js/lightbox-plus-jquery.js'
+markdown_extensions:
+  - lightbox
+```
+
+#### 使用例
+
+画像をクリックするとオーバーレイ表示されるはず。
+…なんだけど、後述のzoom.jsと色々試していたら、`TypeError: this.$overlay is undefined`で動かなくなった。
+jquery.jsとか入れたり消したりしてたから、おかしくなってるのかなぁ。
+
+現在はzoom.jsを有効にしているため、以下はhtmlで記述している。どのみち上記のエラーで動かないけど。
+
+<a data-lightbox="all_images" data-title="lightbox test" href="../sample.png">
+  <img alt="lightbox test" src="../sample.png">
+</a>
+
+
+### zoom.js
+
+画像をズーム表示する。
+
+#### 設定
+
+https://github.com/fat/zoom.js/ をクローンする。
+
+http://www.transitionjs.org/ をダウンロードする。
+
+https://jquery.com/ をダウンロードする。
+
+mkdocs.ymlに以下を追加し、cssとjsを配置する。
+
+```
+extra_css:
+  - 'css/zoom.css'
+extra_javascript:
+  - 'js/jquery.js'
+  - 'js/zoom.js'
+  - 'js/transition.js'
+```
+
+#### 使用例
+
+画像をクリックするとズーム表示されるはず。
+
+![zoomテスト](./sample.png){: data-action="zoom" }
+
+Ctrlを押しながらクリックすれば、別タブで画像を開ける。
+
+* 元画像をズームするのではなく、サムネイルをそのままズームするため、少し画像がぼやけるのが残念。
+
+### mermaid
 
 テキストで図形を描画。
 
-### 設定
+#### 設定
 
 mermaid.jsとmermaid.cssを準備する。
 [MkDocsPlus](https://github.com/bwmarrin/MkDocsPlus/tree/master/docs)や、
@@ -600,7 +687,7 @@ extra_javascript:
 
 mkdocs.ymlで指定したパスに、mermaid.jsとmermaid.cssを配置する。
 
-### 使用例
+#### 使用例
 
 公式の例を使用。
 
@@ -696,7 +783,7 @@ gantt
         Add to mermaid                      :1d
 </div>
 
-## plantuml
+### plantuml
 
 [plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)を使う。
 
@@ -705,9 +792,7 @@ plantumlで画像を作成し、直接貼る。
 yUMLというサービスを使う。
 https://yuml.me/diagram/scruffy/class/draw
 
-## その他
-
-![画像テスト](./test.png)
+## 実験中
 
 <i class="fas fa-user"></i> fas user
 <i class="fas fa-cog"></i> fas cog

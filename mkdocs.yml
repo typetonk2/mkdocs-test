@@ -23,14 +23,18 @@ extra_css:
   - 'css/mermaid.css'
   - 'css/fontawesome-all.css'
   - 'css/lightbox.css'
+  - 'css/zoom.css'
 
 extra_javascript:
   - 'js/mermaid.js'
   - 'js/fontawesome-all.js'
   - 'js/lightbox-plus-jquery.js'
+  - 'js/jquery.js'
+  - 'js/zoom.js'
+  - 'js/transition.js'
 
 markdown_extensions:
-  - lightbox
+  # - lightbox
   - plantuml
   - codehilite:
       linenums: true # 行番号を付与
