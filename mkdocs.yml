@@ -19,6 +19,7 @@ repo_name: 'typetonk2/mkdocs-test'
 repo_url: 'https://github.com/typetonk2/mkdocs-test'
 
 extra_css:
+  - 'css/common.css'
   - 'css/material.css'
   - 'css/mermaid.css'
   - 'css/fontawesome-all.css'
