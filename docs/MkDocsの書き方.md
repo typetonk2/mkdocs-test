@@ -69,39 +69,43 @@ markdown_extensions:
 #### 使用例
 
 ```
-| markdown-include   | 0.5.1  |
-|--------------------|--------|
-| markdown-lightbox  | 0.0.0  |
-| mkdocs             | 0.17.3 |
-| mkdocs-material    | 2.7.1  |
-| pymdown-extensions | 4.9.1  |
+| name                 | ver      | info                   |
+| -------------------- | -------- | ---                    |
+| markdown-include     | 0.5.1    | 外部ファイルを取り込む |
+| markdown-lightbox    | 0.0.0    | lightbox               |
+| mkdocs               | 0.17.3   | mkdocsの機能           |
+| mkdocs-material      | 2.7.1    | mkdocsのテーマ         |
+| pymdown-extensions   | 4.9.1    | markdownの拡張機能     |
 ```
 
-| markdown-include   | 0.5.1  |
-|--------------------|--------|
-| markdown-lightbox  | 0.0.0  |
-| mkdocs             | 0.17.3 |
-| mkdocs-material    | 2.7.1  |
-| pymdown-extensions | 4.9.1  |
+| name                 | ver      | info                   |
+| -------------------- | -------- | ---                    |
+| markdown-include     | 0.5.1    | 外部ファイルを取り込む |
+| markdown-lightbox    | 0.0.0    | lightbox               |
+| mkdocs               | 0.17.3   | mkdocsの機能           |
+| mkdocs-material      | 2.7.1    | mkdocsのテーマ         |
+| pymdown-extensions   | 4.9.1    | markdownの拡張機能     |
 
 * 左寄せと右寄せ。
 * 最初と最後の`|`は省略可能。
 
 ```
- markdown-include     | 0.5.1
-:-------------------- | --------:
- markdown-lightbox    | 0.0.0
- mkdocs               | 0.17.3
- mkdocs-material      | 2.7.1
- pymdown-extensions   | 4.9.1
+ name                 | ver       | info
+:-------------------- | --------: | :---:
+markdown-include      | 0.5.1     | 外部ファイルを取り込む |
+markdown-lightbox     | 0.0.0     | lightbox               |
+mkdocs                | 0.17.3    | mkdocsの機能           |
+mkdocs-material       | 2.7.1     | mkdocsのテーマ         |
+pymdown-extensions    | 4.9.1     | markdownの拡張機能     |
 ```
 
- markdown-include     | 0.5.1
-:-------------------- | --------:
- markdown-lightbox    | 0.0.0
- mkdocs               | 0.17.3
- mkdocs-material      | 2.7.1
- pymdown-extensions   | 4.9.1
+ name                 | ver       | info
+:-------------------- | --------: | :---:
+markdown-include      | 0.5.1     | 外部ファイルを取り込む |
+markdown-lightbox     | 0.0.0     | lightbox               |
+mkdocs                | 0.17.3    | mkdocsの機能           |
+mkdocs-material       | 2.7.1     | mkdocsのテーマ         |
+pymdown-extensions    | 4.9.1     | markdownの拡張機能     |
 
 ### abbr
 
