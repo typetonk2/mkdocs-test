@@ -789,12 +789,73 @@ gantt
 
 ### plantuml
 
-[plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)を使う。
+* [plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)を使う。
+* plantumlで画像を作成し、直接貼る。
+* [yUML](https://yuml.me/diagram/scruffy/class/draw)というサービスを使う。
 
-plantumlで画像を作成し、直接貼る。
+ここでは plantuml-markdown を使ってみる。
 
-yUMLというサービスを使う。
-https://yuml.me/diagram/scruffy/class/draw
+#### 設定
+
+中々面倒だった。
+
+以下を取得する。
+
+[JDK](http://www.oracle.com/technetwork/java/javase/downloads)  
+[plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)  
+[graphviz](http://www.graphviz.org/download)  
+[PlantUML](http://plantuml.com/download)
+
+取得した JDK, plantuml.jar, graphviz を任意の場所に配置する。
+
+パスの設定、および、環境変数`GRAPHVIZ_DOT`を設定する。
+
+plantuml-markdown に含まれている plantuml.py を、`/path/to/python/lib/site-packages/markdown/extensions`フォルダにコピーする。
+
+plantuml-markdownでは、内部で`plantuml`というコマンドを実行する。  
+しかしWindows環境だと上手く動かなかったため、ここでは`plantuml.bat`を作成する。
+
+```
+@"/path/to/java" -jar "/path/to/plantuml.jar" %*
+```
+
+合わせて、plantuml.py を一部変更する。
+
+```python
+  # cmdline = ['plantuml', '-p', outopt ]
+  cmdline = ['plantuml.bat', '-p', outopt ]
+```
+
+次のコマンドを実行し、動作確認する。
+
+```
+>markdown_py -x plantuml hoge.md
+['plantuml.bat', '-p', '-tpng']
+<h1>hoge</h1>
+<p><img alt="uml diagram" classes="uml" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACgCAIAAABL8POqAAAAKXRFWHRjb3B5bGVmdABHZW5lcmF0ZWQgYnkgaHR0cDovL3BsYW50dW1sLmNvbREwORwAAAETelRYdHBsYW50dW1sAAB4nE2OTWvCMBjH7wG/w3PUQyWJQzSMIdtko
+```
+
+PlantUML部分の出力が`src="data:image/png;base64,xxx"`になっていれば変換出来ている。
+
+最後に、mkdocs.ymlに以下を追加する。
+
+```
+markdown_extensions:
+  - plantuml
+```
+
+#### 使用例
+
+公式から抜粋したもの。
+
+{!uml.txt}
+
+##### 注意
+
+* 公式には「GFM形式もサポートしている」とあるが、GFM形式で複数のUMLを書くと、エラーになる。  
+  通常の形式を使うとvimのsyntaxがおかしくなるので、別ファイルにして読み込んでいる。
+
+* PlantUMLで画像を生成するため、その分読み込みが遅くなる。
 
 ## 実験中
 
