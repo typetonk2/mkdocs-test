@@ -107,6 +107,22 @@ mkdocs                | 0.17.3    | mkdocsの機能           |
 mkdocs-material       | 2.7.1     | mkdocsのテーマ         |
 pymdown-extensions    | 4.9.1     | markdownの拡張機能     |
 
+テーブル内でitalic等。
+
+```
+hoge   | foo            | bar
+-      | -              | -
+strong | **strong**     | bar**strong**
+italic | *italic*       | bar*italic*
+num    | 4020000**400** | **400**
+```
+
+hoge   | foo            | bar
+-      | -              | -
+strong | **strong**     | bar**strong**
+italic | *italic*       | bar*italic*
+num    | 4020000**400** | **400**
+
 ### abbr
 
 略語の追加。
