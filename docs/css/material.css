@@ -1,5 +1,9 @@
 /* custom css for mkdocs-material. */
 
+:not([data-md-state="blur"]) + nav {
+  display: none;
+}
+
 /* header settings */
 .md-typeset h1[id] {
   border-bottom: 12px solid;
