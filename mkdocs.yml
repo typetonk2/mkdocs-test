@@ -55,6 +55,8 @@ markdown_extensions:
   - fenced_code
   - wikilinks
   - sane_lists
+  - markdown_blockdiag:
+      format: svg
   - markdown_include.include:
       base_path: docs
   - pymdownx.tasklist:

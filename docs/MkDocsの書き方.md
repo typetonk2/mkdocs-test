@@ -6,6 +6,7 @@ MkDocsの書き方やextensionについて試した結果のメモ。
 ## 確認環境
 
 ```
+python             3.6.4
 markdown-include   0.5.1
 markdown-lightbox  0.0.0
 mkdocs             0.17.3
@@ -51,9 +52,10 @@ markdown_extensions:
 
 #### 使用例
 
-```
-[TOC]
-```
+
+??? 目次
+
+    [TOC]
 
 ### table
 
@@ -648,7 +650,7 @@ jquery.jsとか入れたり消したりしてたから、おかしくなって�
 現在はzoom.jsを有効にしているため、以下はhtmlで記述している。どのみち上記のエラーで動かないけど。
 
 <a data-lightbox="all_images" data-title="lightbox test" href="../sample.png">
-  <img alt="lightbox test" src="../sample.png">
+  <img alt="lightbox test" src="../sample.png" width="300px">
 </a>
 
 
@@ -679,11 +681,11 @@ extra_javascript:
 
 画像をクリックするとズーム表示されるはず。
 
-![zoomテスト](./sample.png){: data-action="zoom" }
+![zoomテスト](./sample.png){: data-action="zoom" width="300px" }
 
 Ctrlを押しながらクリックすれば、別タブで画像を開ける。
 
-* 元画像をズームするのではなく、サムネイルをそのままズームするため、少し画像がぼやけるのが残念。
+* 少し画像がぼやける感じがする。
 
 ### mermaid
 
@@ -869,9 +871,125 @@ markdown_extensions:
 ##### 注意
 
 * 公式には「GFM形式もサポートしている」とあるが、GFM形式で複数のUMLを書くと、エラーになる。  
-  通常の形式を使うとvimのsyntaxがおかしくなるので、別ファイルにして読み込んでいる。
+  そのため通常の形式を使っているが、vimのsyntaxがおかしくなるため、[markdown_include](#markdown_include)で読み込んでいる。
 
 * PlantUMLで画像を生成するため、その分読み込みが遅くなる。
+
+### blockdiag
+
+mermaidと同じように、テキストで図形を描画。
+幾つかのツールを含む。ネットワーク図が書けるのもある。
+
+日本人作者のため、日本語マニュアルがある。  
+http://blockdiag.com/ja/index.html
+
+
+#### 設定
+
+[markdown-blockdiag](https://github.com/gisce/markdown-blockdiag)をインストールする。
+
+依存関係でインストールされる[funcparserlib](https://github.com/vlasovskikh/funcparserlib)が構文エラーを吐くため、次の通り修正する。
+
+```diff
+$ diff -u1 parser.py parser.py.bak
+--- parser.py   2018-05-09 15:43:44.521808600 +0900
++++ parser.py.bak       2018-05-09 15:43:28.115107400 +0900
+@@ -122,3 +122,3 @@
+             return tree
+-        except NoParseError as e:
++        except NoParseError, e:
+             max = e.state.max
+@@ -179,3 +179,3 @@
+                 return self.run(tokens, s)
+-            except NoParseError as e:
++            except NoParseError, e:
+                 return other.run(tokens, State(s.pos, e.state.max))
+@@ -293,3 +293,3 @@
+                 res.append(v)
+-        except NoParseError as e:
++        except NoParseError, e:
+             return res, State(s.pos, e.state.max)
+```
+
+mkdocs.ymlに以下を追加する。
+
+```
+markdown_extensions:
+  - markdown_blockdiag:
+      format: png
+```
+
+svg か png を指定出来る模様。
+
+#### 使用例
+
+公式から抜粋。
+
+blockdiag {
+   A -> B -> C -> D;
+   A -> E -> F -> G;
+}
+
+seqdiag {
+  browser  -> webserver [label = "GET /index.html"];
+  browser <-- webserver;
+  browser  -> webserver [label = "POST /blog/comment"];
+              webserver  -> database [label = "INSERT comment"];
+              webserver <-- database;
+  browser <-- webserver;
+}
+
+actdiag {
+  write -> convert -> image
+
+  lane user {
+     label = "User"
+     write [label = "Writing reST"];
+     image [label = "Get diagram IMAGE"];
+  }
+  lane actdiag {
+     convert [label = "Convert reST to Image"];
+  }
+}
+
+nwdiag {
+  network dmz {
+      address = "210.x.x.x/24"
+
+      web01 [address = "210.x.x.1"];
+      web02 [address = "210.x.x.2"];
+  }
+  network internal {
+      address = "172.x.x.x/24";
+
+      web01 [address = "172.x.x.1"];
+      web02 [address = "172.x.x.2"];
+      db01;
+      db02;
+  }
+}
+
+nwdiag {
+  inet [shape = cloud];
+  inet -- router;
+
+  network {
+    router;
+    web01;
+    web02;
+  }
+}
+
+rackdiag {
+  12U;
+
+  1: Server
+  2: Server
+  3: Server
+  4: Server
+  5: N/A [8U];
+}
+
 
 ## 実験中
 
