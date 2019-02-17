@@ -1,0 +1,86 @@
+/* custom css for mkdocs-material. */
+
+/* 目次が極端に短い場合、ナビゲーションメニューが表示されなくなる */
+/* :not([data-md-state="blur"]) + nav { */
+/*   display: none;                     */
+/* }                                    */
+
+/* header settings */
+.md-typeset h1[id] {
+  border-bottom: 12px solid;
+}
+/* .md-typeset h1[id]:before { */
+/*   content: "■ ";          */
+/*   display: inline;          */
+/*   font-size: 42px;          */
+/* }                           */
+
+.md-typeset h2[id] {
+  border-bottom: 6px solid;
+}
+.md-typeset h2[id]:before {
+  content: "■ ";
+  display: inline;
+  font-size: 27px;
+}
+
+.md-typeset h3[id] {
+  border-bottom: 5px solid;
+}
+.md-typeset h3[id]:before {
+  content: "● ";
+  display: inline;
+  font-size: 24px;
+}
+
+.md-typeset h4[id] {
+  border-bottom: 4px solid;
+}
+.md-typeset h4[id]:before {
+  content: "▼ ";
+  display: inline;
+  font-size: 20px;
+}
+
+/* .md-typeset h5[id] {        */
+/*   border-bottom: 4px solid; */
+/* }                           */
+/* .md-typeset h5[id]:before { */
+/*   content: "○ ";          */
+/*   display: inline;          */
+/*   font-size: 14px;          */
+/* }                           */
+
+/* .md-typeset h6[id] {        */
+/*   border-bottom: 2px solid; */
+/* }                           */
+/* .md-typeset h6[id]:before { */
+/*   content: "▽ ";          */
+/*   display: inline;          */
+/*   font-size: 10px;          */
+/* }                           */
+
+/* navigation settings. */
+.md-nav__link[data-md-state=blur] {
+  color: rgba(0,0,0,.40)
+}
+
+.md-search-result__link[data-md-state=active] {
+  background-color: blue;
+}
+
+@media only screen and (min-width: 76.25em) {
+  .md-main__inner {
+    max-width: none;
+  }
+  .md-sidebar--primary {
+    left: 0;
+  }
+  .md-sidebar--secondary {
+    right: 0;
+    margin-left: 0;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
