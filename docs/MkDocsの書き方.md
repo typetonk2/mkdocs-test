@@ -859,14 +859,11 @@ markdown_extensions:
 
 公式から抜粋したもの。
 
-{!uml.txt}
+{!uml.txt!}
 
 ##### 注意
 
-* 公式には「GFM形式もサポートしている」とあるが、GFM形式で複数のUMLを書くと、エラーになる。  
-  そのため通常の形式を使っているが、vimのsyntaxがおかしくなるため、[markdown_include](#markdown_include)で読み込んでいる。
-
-* PlantUMLで画像を生成するため、その分読み込みが遅くなる。
+* PlantUMLで画像を生成して埋め込むため、少し遅くなる。
 
 ### blockdiag
 
