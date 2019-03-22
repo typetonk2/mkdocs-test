@@ -37,7 +37,8 @@ extra_javascript:
 
 markdown_extensions:
   # - lightbox
-  - plantuml
+  - plantuml-markdown:
+      format: png
   - codehilite:
       linenums: true # 行番号を付与
       use_pygments: true # Pygmentsを使用

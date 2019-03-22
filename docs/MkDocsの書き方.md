@@ -9,10 +9,10 @@ MkDocsの書き方やextensionについて試した結果のメモ。
 python             3.6.4
 markdown-include   0.5.1
 markdown-lightbox  0.0.0
-mkdocs             0.17.3
-mkdocs-material    2.7.1
-pymdown-extensions 4.9.1
-plantuml-markdown  1.4.0
+mkdocs             1.0.4
+mkdocs-material    4.0.1
+pymdown-extensions 6.0
+plantuml-markdown  2.0.1
 ```
 
 * mkdocs-materialテーマでのみ確認。
@@ -810,31 +810,30 @@ gantt
 
 中々面倒だった。
 
-以下を取得する。
+以下を取得し、任意の場所に配置する。
 
 [JDK](http://www.oracle.com/technetwork/java/javase/downloads)  
-[plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)  
 [graphviz](http://www.graphviz.org/download)  
 [PlantUML](http://plantuml.com/download)
 
-取得した JDK, plantuml.jar, graphviz を任意の場所に配置する。
-
-パスの設定、および、環境変数`GRAPHVIZ_DOT`を設定する。
-
-plantuml-markdown に含まれている plantuml.py を、`/path/to/python/lib/site-packages/markdown/extensions`フォルダにコピーする。
-
-plantuml-markdownでは、内部で`plantuml`というコマンドを実行する。  
-しかしWindows環境だと上手く動かなかったため、ここでは`plantuml.bat`を作成する。
+[plantuml-markdown](https://github.com/mikitex70/plantuml-markdown)をインストールする。
 
 ```
-@"/path/to/java" -jar "/path/to/plantuml.jar" %*
+python -m pip install plantuml-markdown
 ```
 
-合わせて、plantuml.py を一部変更する。
+plantuml.bat を作成し、パスを通す。
 
-```python
-  # cmdline = ['plantuml', '-p', outopt ]
-  cmdline = ['plantuml.bat', '-p', outopt ]
+```cmd
+@echo off
+
+set MYJAVA="C:\Program Files\Java\jre1.8.0_201\bin\java.exe"
+set MYPLANTUML="%USERPROFILE%\program\plantuml\plantuml.jar"
+
+setlocal
+set GRAPHVIZ_DOT="%USERPROFILE%\program\graphviz\bin\dot.exe"
+
+%MYJAVA% -jar %MYPLANTUML% %*
 ```
 
 次のコマンドを実行し、動作確認する。
@@ -852,18 +851,31 @@ PlantUML部分の出力が`src="data:image/png;base64,xxx"`になっていれば
 
 ```
 markdown_extensions:
-  - plantuml
+  - plantuml-markdown
 ```
 
 #### 使用例
 
 公式から抜粋したもの。
 
-{!uml.txt!}
+```plantuml format="png" classes="uml myDiagram" alt="My super diagram placeholder" title="My super diagram" width="300px" height="300px"
+actor Foo1
+boundary Foo2
+control Foo3
+entity Foo4
+database Foo5
+collections Foo6
+Foo1 -> Foo2 : To boundary
+Foo1 -> Foo3 : To control
+Foo1 -> Foo4 : To entity
+Foo1 -> Foo5 : To database
+Foo1 -> Foo6 : To collections
+```
 
 ##### 注意
 
 * PlantUMLで画像を生成して埋め込むため、少し遅くなる。
+* markdown_include や snippets で読み込めなくなった。
 
 ### blockdiag
 
