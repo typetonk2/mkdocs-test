@@ -12,6 +12,7 @@ markdown-lightbox  0.0.0
 mkdocs             0.17.3
 mkdocs-material    2.7.1
 pymdown-extensions 4.9.1
+plantuml-markdown  1.4.0
 ```
 
 * mkdocs-materialテーマでのみ確認。
@@ -73,8 +74,6 @@ markdown_extensions:
 ```
 | name                 | ver      | info                   |
 | -------------------- | -------- | ---                    |
-| markdown-include     | 0.5.1    | 外部ファイルを取り込む |
-| markdown-lightbox    | 0.0.0    | lightbox               |
 | mkdocs               | 0.17.3   | mkdocsの機能           |
 | mkdocs-material      | 2.7.1    | mkdocsのテーマ         |
 | pymdown-extensions   | 4.9.1    | markdownの拡張機能     |
@@ -82,8 +81,6 @@ markdown_extensions:
 
 | name                 | ver      | info                   |
 | -------------------- | -------- | ---                    |
-| markdown-include     | 0.5.1    | 外部ファイルを取り込む |
-| markdown-lightbox    | 0.0.0    | lightbox               |
 | mkdocs               | 0.17.3   | mkdocsの機能           |
 | mkdocs-material      | 2.7.1    | mkdocsのテーマ         |
 | pymdown-extensions   | 4.9.1    | markdownの拡張機能     |
@@ -94,8 +91,6 @@ markdown_extensions:
 ```
  name                 | ver       | info
 :-------------------- | --------: | :---:
-markdown-include      | 0.5.1     | 外部ファイルを取り込む |
-markdown-lightbox     | 0.0.0     | lightbox               |
 mkdocs                | 0.17.3    | mkdocsの機能           |
 mkdocs-material       | 2.7.1     | mkdocsのテーマ         |
 pymdown-extensions    | 4.9.1     | markdownの拡張機能     |
@@ -103,8 +98,6 @@ pymdown-extensions    | 4.9.1     | markdownの拡張機能     |
 
  name                 | ver       | info
 :-------------------- | --------: | :---:
-markdown-include      | 0.5.1     | 外部ファイルを取り込む |
-markdown-lightbox     | 0.0.0     | lightbox               |
 mkdocs                | 0.17.3    | mkdocsの機能           |
 mkdocs-material       | 2.7.1     | mkdocsのテーマ         |
 pymdown-extensions    | 4.9.1     | markdownの拡張機能     |
@@ -866,14 +859,11 @@ markdown_extensions:
 
 公式から抜粋したもの。
 
-{!uml.txt}
+{!uml.txt!}
 
 ##### 注意
 
-* 公式には「GFM形式もサポートしている」とあるが、GFM形式で複数のUMLを書くと、エラーになる。  
-  そのため通常の形式を使っているが、vimのsyntaxがおかしくなるため、[markdown_include](#markdown_include)で読み込んでいる。
-
-* PlantUMLで画像を生成するため、その分読み込みが遅くなる。
+* PlantUMLで画像を生成して埋め込むため、少し遅くなる。
 
 ### blockdiag
 
@@ -990,11 +980,16 @@ rackdiag {
   5: N/A [8U];
 }
 
-
-## 実験中
+## fontawesome
 
 <i class="fas fa-user"></i> fas user
 <i class="fas fa-cog"></i> fas cog
 <i class="fas fa-arrow-circle-right"></i> right
 <i class="fas fa-arrow-alt-circle-right"></i> alt-right
 
+## TODO
+
+家で試したら、以下が読み込まれない。
+
+* mdx_del_ins
+* markdown-lightbox

@@ -71,4 +71,5 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.betterem:
       smart_enable: 'underscore'
+  # - del_ins
 
