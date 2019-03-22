@@ -3,6 +3,7 @@ use_directory_urls: true
 
 theme:
   name: 'material'
+  custom_dir: 'theme'
   font:
     text: 'Meiryo UI'
     code: 'Consolas'
@@ -25,12 +26,12 @@ extra_css:
   - 'css/fontawesome-all.css'
   - 'css/lightbox.css'
   - 'css/zoom.css'
+  - 'css/chart.min.css'
 
 extra_javascript:
   - 'js/mermaid.js'
   - 'js/fontawesome-all.js'
   - 'js/lightbox-plus-jquery.js'
-  - 'js/jquery.js'
   - 'js/zoom.js'
   - 'js/transition.js'
 
@@ -70,5 +71,4 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.betterem:
       smart_enable: 'underscore'
-  - del_ins
 
