@@ -546,38 +546,64 @@ markdown_extensions:
 
 後述の`markdown_include`の方がいいかもしれない。
 
-## その他
+### SuperFences
 
-markdown標準やpymdownxに含まれていないもの。  
-GitHub等から直接インストールしたり、外部jsとして追加して使用する。
+幾つか機能があるけど、使いたいものだけに絞る。
 
-### mdx_del_ins
-
-`<del>`と`<ins>`タグを追加する。
-`pymdownx.tilde`でも`<del>`は使えるけど、何だか挙動が怪しかったのでこっちを残した。
-
-最終更新日が6年前っていうのが気になるけど、シンプル故にバグもない、と思いたい。
+* Nested Fences
+* Tabbed Fences
 
 #### 設定
 
-pipでインストール。
-
-`pip install mdx_del_ins`
-
-mkdocs.ymlで設定。
-
 ```
 markdown_extensions:
-  - del_ins
+  - pymdownx.superfences
 ```
 
 #### 使用例
 
-```
-このテキストには ++追加された箇所++ と ~~削除された箇所~~ があります。
+```md tab="nested list"
+* 
+    ```py3 
+    import sys;
+    print(sys.version)
+    ```
+* b
+* c
 ```
 
-このテキストには ++追加された箇所++ と ~~削除された箇所~~ があります。
+```bat tab=
+@ECHO OFF
+ECHO %USERPROFILE%
+```
+
+```html tab=
+<div class="hoge">
+    <img alt="img" src="../img.png" />
+</div>
+```
+
+```md tab=
+## tabbed
+
+[tabbed](#link) markdown.
+```
+
+!!! example
+    ````tab="Source"
+    ```py3
+    import foo.bar
+    ```
+    ````
+
+    ```py3 tab="Output"
+    import foo.bar
+    ```
+
+## その他
+
+markdown標準やpymdownxに含まれていないもの。  
+GitHub等から直接インストールしたり、外部jsとして追加して使用する。
 
 ### markdown_include
 
@@ -601,13 +627,15 @@ markdown_extensions:
 
 #### 使用例
 
-コードブロックで囲っても、読み込まれた内容が表示される。
+コードブロックで囲った場合。
 
 ```
 {!include.txt!}
 ```
 
-こちらはsyntax的に問題ない。
+囲わなかった場合。
+
+{!include.txt!}
 
 ### Lightbox
 
@@ -709,94 +737,26 @@ mkdocs.ymlで指定したパスに、mermaid.jsとmermaid.cssを配置する。
 フローチャート
 
 ```
-<div class="mermaid">
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-</div>
+{!diagram/mermaid-flow.txt!}
 ```
 
-<div class="mermaid">
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-</div>
+{!diagram/mermaid-flow.txt!}
 
 シーケンス図
 
 ```
-<div class="mermaid">
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->John: Hello John, how are you?
-    loop Healthcheck
-        John->John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail...
-    John-->Alice: Great!
-    John->Bob: How about you?
-    Bob-->John: Jolly good!
-</div>
+{!diagram/mermaid-sequence.txt!}
 ```
 
-<div class="mermaid">
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->John: Hello John, how are you?
-    loop Healthcheck
-        John->John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail...
-    John-->Alice: Great!
-    John->Bob: How about you?
-    Bob-->John: Jolly good!
-</div>
+{!diagram/mermaid-sequence.txt!}
 
 ガントチャート。正直これは使わない気がする。
 
 ```
-<div class="mermaid">
-gantt
-        dateFormat  YYYY-MM-DD
-        title Adding GANTT diagram functionality to mermaid
-        section A section
-        Completed task            :done,    des1, 2014-01-06,2014-01-08
-        Active task               :active,  des2, 2014-01-09, 3d
-        Future task               :         des3, after des2, 5d
-        Future task2               :         des4, after des3, 5d
-        section Critical tasks
-        Completed task in the critical line :crit, done, 2014-01-06,24h
-        Implement parser and jison          :crit, done, after des1, 2d
-        Create tests for parser             :crit, active, 3d
-        Future task in critical line        :crit, 5d
-        Create tests for renderer           :2d
-        Add to mermaid                      :1d
-</div>
+{!diagram/mermaid-gantt.txt!}
 ```
 
-<div class="mermaid">
-gantt
-        dateFormat  YYYY-MM-DD
-        title Adding GANTT diagram functionality to mermaid
-        section A section
-        Completed task            :done,    des1, 2014-01-06,2014-01-08
-        Active task               :active,  des2, 2014-01-09, 3d
-        Future task               :         des3, after des2, 5d
-        Future task2               :         des4, after des3, 5d
-        section Critical tasks
-        Completed task in the critical line :crit, done, 2014-01-06,24h
-        Implement parser and jison          :crit, done, after des1, 2d
-        Create tests for parser             :crit, active, 3d
-        Future task in critical line        :crit, 5d
-        Create tests for renderer           :2d
-        Add to mermaid                      :1d
-</div>
+{!diagram/mermaid-gantt.txt!}
 
 ### plantuml
 
@@ -824,7 +784,7 @@ python -m pip install plantuml-markdown
 
 plantuml.bat を作成し、パスを通す。
 
-```cmd
+```bat
 @echo off
 
 set MYJAVA="C:\Program Files\Java\jre1.8.0_201\bin\java.exe"
@@ -859,23 +819,19 @@ markdown_extensions:
 公式から抜粋したもの。
 
 ```plantuml format="png" classes="uml myDiagram" alt="My super diagram placeholder" title="My super diagram" width="300px" height="300px"
-actor Foo1
-boundary Foo2
-control Foo3
-entity Foo4
-database Foo5
-collections Foo6
-Foo1 -> Foo2 : To boundary
-Foo1 -> Foo3 : To control
-Foo1 -> Foo4 : To entity
-Foo1 -> Foo5 : To database
-Foo1 -> Foo6 : To collections
+{!diagram/uml.txt!}
 ```
 
 ##### 注意
 
 * PlantUMLで画像を生成して埋め込むため、少し遅くなる。
-* markdown_include や snippets で読み込めなくなった。
+*
+markdown_include や snippets で読み込むには、以下のように書く必要がある。
+	````
+	```plantuml
+	<includeやsnippetの記述>
+	```
+	````
 
 ### blockdiag
 
@@ -884,7 +840,6 @@ mermaidと同じように、テキストで図形を描画。
 
 日本人作者のため、日本語マニュアルがある。  
 http://blockdiag.com/ja/index.html
-
 
 #### 設定
 
@@ -927,70 +882,7 @@ svg か png を指定出来る模様。
 
 公式から抜粋。
 
-blockdiag {
-   A -> B -> C -> D;
-   A -> E -> F -> G;
-}
-
-seqdiag {
-  browser  -> webserver [label = "GET /index.html"];
-  browser <-- webserver;
-  browser  -> webserver [label = "POST /blog/comment"];
-              webserver  -> database [label = "INSERT comment"];
-              webserver <-- database;
-  browser <-- webserver;
-}
-
-actdiag {
-  write -> convert -> image
-
-  lane user {
-     label = "User"
-     write [label = "Writing reST"];
-     image [label = "Get diagram IMAGE"];
-  }
-  lane actdiag {
-     convert [label = "Convert reST to Image"];
-  }
-}
-
-nwdiag {
-  network dmz {
-      address = "210.x.x.x/24"
-
-      web01 [address = "210.x.x.1"];
-      web02 [address = "210.x.x.2"];
-  }
-  network internal {
-      address = "172.x.x.x/24";
-
-      web01 [address = "172.x.x.1"];
-      web02 [address = "172.x.x.2"];
-      db01;
-      db02;
-  }
-}
-
-nwdiag {
-  inet [shape = cloud];
-  inet -- router;
-
-  network {
-    router;
-    web01;
-    web02;
-  }
-}
-
-rackdiag {
-  12U;
-
-  1: Server
-  2: Server
-  3: Server
-  4: Server
-  5: N/A [8U];
-}
+{!diagram/xxxdiag.txt!}
 
 ## fontawesome
 
@@ -1003,5 +895,4 @@ rackdiag {
 
 家で試したら、以下が読み込まれない。
 
-* mdx_del_ins
 * markdown-lightbox
