@@ -163,71 +163,73 @@ markdown_extensions:
 
 #### 使用例
 
-```
 !!! Note
-    This is Note!
-```
-
-!!! Note
-    This is Note!
-
-```
-!!! Warning
-    This is Warning!
-```
+    ```md
+    !!! Note
+        This is Note!
+    ```
 
 !!! Warning
-    This is Warning!
-
-```
-!!! Danger
-    This is Danger!
-```
+    ```md
+    !!! Warning
+        This is Warning!
+    ```
 
 !!! Danger
-    This is Danger!
-
-```
-!!! Success
-    This is Success!
-```
+    ```md
+    !!! Danger
+        This is Danger!
+    ```
 
 !!! Success
-    This is Success!
+    ```md
+    !!! Success
+        This is Success!
+    ```
 
-```
+!!! Error
+    ```md
+    !!! Error
+        This is Error!
+    ```
+
 !!! Failure
-    This is Failure!
-```
-
-!!! Failure
-    This is Failure!
-
-```
-!!! Bug
-    This is Bug!
-```
+    ```
+    !!! Failure
+        This is Failure!
+    ```
 
 !!! Bug
-    This is Bug!
-
-```
-!!! Summary
-    This is Summary!
-```
+    ```md
+    !!! Bug
+        This is Bug!
+    ```
 
 !!! Summary
-    This is Summary!
+    ```md
+    !!! Summary
+        This is Summary!
+    ```
+
+!!! Info
+    ```md
+    !!! Tip
+        This is Info!
+    ```
+
+!!! Todo
+    ```md
+    !!! Todo
+        This is Todo!
+    ```
 
 * タイトルを変更
 
-```
 !!! Note "Change title"
-    This is Note!
-```
-
-!!! Note "Change title"
-    This is Note!
+    ```
+    !!! Note "Change title"
+        This is Note!
+    ```
 
 ### attr_list
 
