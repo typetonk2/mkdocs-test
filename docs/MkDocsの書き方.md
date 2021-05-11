@@ -827,13 +827,12 @@ markdown_extensions:
 ##### 注意
 
 * PlantUMLで画像を生成して埋め込むため、少し遅くなる。
-*
-markdown_include や snippets で読み込むには、以下のように書く必要がある。
-	````
-	```plantuml
-	<includeやsnippetの記述>
-	```
-	````
+* markdown_include や snippets で読み込むには、以下のように書く必要がある。
+    ````
+    ```plantuml
+    <includeやsnippetの記述>
+    ```
+    ````
 
 ### blockdiag
 
