@@ -1,6 +1,7 @@
 # chartjsを試す
 
-表示される？
+mkdocs.ymlのextra_javascriptに設定しても動かない。  
+直接scriptタグに書けば動く。
 
 ## サンプル
 

@@ -26,7 +26,6 @@ extra_css:
   - 'css/fontawesome-all.css'
   - 'css/lightbox.css'
   - 'css/zoom.css'
-  - 'css/chart.min.css'
 
 extra_javascript:
   - 'js/mermaid.js'
